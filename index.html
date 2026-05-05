@@ -23,7 +23,7 @@ input,select{font-family:Arial,Helvetica,sans-serif;font-size:15px;border:0;back
 
 <section class="page">
   <div class="kopf"><div class="title">Kassenbericht</div><div class="nr">Nr.<input id="kbNr" value="1"></div><div class="date">Datum<input id="kbDate" type="date" oninput="syncDate()"></div></div>
-  <div class="topline"><div>Kassenbestand bei Geschäftsschluss</div><div><input id="closingCash" class="right" inputmode="decimal" placeholder="0,00" oninput="calc()"></div><div class="book">Buchungs-<br>vermerke</div></div>
+  <div class="topline"><div>Kassenbestand bei Geschäftsschluss</div><div><input id="closingCash" class="right" inputmode="decimal" placeholder="0,00" readonly></div><div class="book">Buchungs-<br>vermerke</div></div>
 
   <div class="kassen">
     <div class="cell h">Ausgaben im Laufe des Tages<br><span class="subh">Wareneinkäufe und Warennebenkosten</span></div><div class="cell h center">Vorsteuer</div><div class="cell h center">Netto-/Brutto-<br>Betrag</div><div class="cell"></div><div class="cell"></div>
@@ -82,17 +82,33 @@ function renderCash(){let h='';notes.forEach((v,i)=>h+=row(v,'n'+i));h+=totalRow
 function q(id){return parseInt(document.getElementById('q_'+id)?.value||'0',10)||0}
 function chg(id,d){document.getElementById('q_'+id).value=Math.max(0,q(id)+d);calc()}
 function calc(){
- let nt=0,ct=0;notes.forEach((v,i)=>{let s=v*q('n'+i);nt+=s;text('t_n'+i,s)});coins.forEach((v,i)=>{let s=v*q('c'+i);ct+=s;text('t_c'+i,s)});let counted=nt+ct;text('notesTotal',nt);text('notesTotal_extra',nt);text('coinsTotal',ct);text('coinsTotal_extra',ct);text('yellowTotal',counted);text('grandTotalCell',counted);
+ let nt=0,ct=0;
+ notes.forEach((v,i)=>{let s=v*q('n'+i);nt+=s;text('t_n'+i,s)});
+ coins.forEach((v,i)=>{let s=v*q('c'+i);ct+=s;text('t_c'+i,s)});
+ let counted=nt+ct;
+ text('notesTotal',nt);text('notesTotal_extra',nt);text('coinsTotal',ct);text('coinsTotal_extra',ct);text('yellowTotal',counted);text('grandTotalCell',counted);
+
  const expenses=val('exp1')+val('exp2')+val('exp3')+val('exp4')+val('exp5')+val('biz1')+val('biz2')+val('other1')+val('other2')+val('other3');
- const closing=val('closingCash');
  const prev=val('prevSaldo');
+ const daily=val('vat19')+val('vat7')+val('miscIncome');
+
+ // KASSENBERICHT 305 ORIGINAL — voll berechnet
+ const closing=prev+daily-expenses;
  const summe=closing+expenses;
  const entry=summe-prev;
- const daily=val('vat19')+val('vat7')+val('miscIncome');
- put('expensesTotal',expenses);put('summe',summe);put('cashEntry',entry);put('dailyTotal',daily);
+
+ put('closingCash',closing);
+ put('expensesTotal',expenses);
+ put('summe',summe);
+ put('cashEntry',entry);
+ put('dailyTotal',daily);
+
  if(!document.activeElement || document.activeElement.id!=='zpPrev') document.getElementById('zpPrev').value=document.getElementById('prevSaldo').value;
- const zpSoll=val('prevSaldo')+daily-expenses;
- text('zpSollCell',zpSoll);text('zpDiffCell',counted-zpSoll);
+
+ // Zählprotokoll kontrolliert gegen Kassenbericht
+ const zpSoll=closing;
+ text('zpSollCell',zpSoll);
+ text('zpDiffCell',counted-zpSoll);
  window.lastFinalTotal=closing;
 }
 function setToday(){const d=new Date().toISOString().slice(0,10);document.getElementById('kbDate').value=d}
