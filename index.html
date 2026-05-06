@@ -3,33 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kassenbericht 305 + Zählprotokoll – Eiscafé Sanremo</title>
+<title>Kassenbericht 305 – Eiscafé Sanremo</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#d9d9d9;font-family:Arial,Helvetica,sans-serif;color:#111}
 .app{max-width:980px;margin:0 auto;padding:14px}
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 auto 12px;padding:10px;background:#f3f4f6;border:1px solid #bbb;border-radius:10px;max-width:210mm}
-button{border:0;border-radius:7px;background:#111;color:#fff;font-weight:700;padding:9px 12px;cursor:pointer}.gray{background:#555}.red{background:#991b1b}.green{background:#166534}
+button{border:0;border-radius:7px;background:#111;color:#fff;font-weight:700;padding:9px 12px;cursor:pointer}.gray{background:#555}.red{background:#991b1b}.green{background:#166534}.blue{background:#1d4ed8}
 .page{width:210mm;min-height:297mm;background:#fff;margin:0 auto 18px;padding:10mm 11mm;box-shadow:0 2px 12px rgba(0,0,0,.25)}
-input,select{font-family:Arial,Helvetica,sans-serif;font-size:15px;border:0;background:transparent;width:100%;height:100%;padding:2px;text-align:center;font-weight:700}input[type=date]{font-size:14px}.right{text-align:right}.left{text-align:left}.blue{color:#244f94}.small{font-size:11px}.bold{font-weight:700}.center{text-align:center}
+input,select{font-family:Arial,Helvetica,sans-serif;font-size:15px;border:0;background:transparent;width:100%;height:100%;padding:2px;text-align:center;font-weight:700}input[type=date]{font-size:14px}.right{text-align:right}.left{text-align:left}.small{font-size:11px}.bold{font-weight:700}.center{text-align:center}
 .kopf{display:grid;grid-template-columns:1fr 120px 150px;align-items:center;border-bottom:2px solid #244f94;margin-bottom:6px;padding-bottom:4px}
 .title{font-size:30px;font-weight:500;color:#244f94;display:flex;align-items:center}
-.nr,.date{display:flex;align-items:center;gap:6px;color:#244f94;font-weight:700;justify-content:flex-start}
-.nr{justify-content:center}
-.date{justify-content:flex-end;padding-right:6px}
-.nr input{width:60px}
-.date input{width:120px;text-align:center}
-.nr input,.date input{border-bottom:1px solid #244f94;color:#111;font-size:18px;height:26px;text-align:center}.title{font-size:30px;font-weight:500;color:#244f94}.nr,.date{display:flex;align-items:end;gap:5px;color:#244f94;font-weight:700}.nr input,.date input{border-bottom:1px solid #244f94;color:#111;font-size:20px;height:30px}.topline{display:grid;grid-template-columns:1fr 112px 32px;border-bottom:2px solid #244f94;color:#244f94;font-size:13px;font-weight:700}.topline div{padding:2px 4px}.topline input{font-size:20px;text-align:right;color:#111}
-.kassen{display:grid;grid-template-columns:88mm 27mm 32mm 27mm 22mm;border-left:0;border-top:0}.cell{border-right:1px solid #244f94;border-bottom:1px solid #244f94;min-height:10.8mm;padding:2px 4px}.h{color:#244f94;font-weight:700;font-size:13px}.subh{font-size:11px;color:#244f94}.amount input{text-align:right;font-size:22px}.narrow input{font-size:17px}.book{color:#244f94;font-weight:700;font-size:11px}.blank{min-height:8.5mm}.sectionlabel{color:#244f94;font-size:12px;font-weight:700}.desc input{text-align:left;font-size:18px}.sumrow .cell{min-height:8mm}.sumlabel{color:#244f94;font-weight:700;text-align:right}.sumamount input{font-size:21px;text-align:right}.bottom-grid{display:grid;grid-template-columns:90mm 35mm 30mm 35mm;margin-top:1mm}.bottom-cell{border-bottom:1px solid #244f94;min-height:9mm;padding:2px 4px}.bottom-cell input{font-size:20px;text-align:right}.vatlabel{font-size:20px;text-align:center}.footerline{display:grid;grid-template-columns:80mm 55mm 45mm;margin-top:4mm;align-items:end}.footerline div{border-bottom:1px solid #244f94;min-height:10mm}.footerline .label{border:0;color:#244f94;font-weight:700;font-size:13px}.cash-table{width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed}.cash-table th,.cash-table td{border:1px solid #000;padding:4px;height:27px}.cash-table th{text-align:center;color:red;background:#fff}.cash-table td.value{text-align:right;width:32%;font-weight:700;padding-right:10px}.cash-table td.qty{width:24%;padding:0;text-align:center}.cash-table td.total{text-align:right;width:34%;padding-right:10px;font-weight:700}.cash-table td.extra{width:10%;text-align:right;background:#ffc000;font-weight:700;padding-right:10px}.qty-wrap{display:grid;grid-template-columns:34px 1fr 34px;height:100%}.qty-wrap button{border:0;border-radius:0;background:#eee;color:#000;font-size:16px;padding:0;font-weight:900}.qty-wrap input{color:#00f}.summary{margin-top:10px;width:100%;border-collapse:collapse;font-size:15px}.summary td{border:1px solid #000;padding:5px;height:28px}.summary .label{font-weight:700;background:#b4c7e7;text-align:center}.yellow{background:#ffc000;text-align:right;font-weight:900}.greenCell{background:#00b050;text-align:right;font-weight:900}.redcell{background:red}.signs{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:18px;font-size:13px;font-weight:700}.sign{border-bottom:1px solid #000;height:35px}
-@media print{body{background:#fff}.app{padding:0}.toolbar,.qty-wrap button{display:none!important}.page{box-shadow:none;margin:0;width:210mm;height:297mm;min-height:0;page-break-after:always}.page:last-child{page-break-after:auto}.qty-wrap{display:block}.qty-wrap input{height:22px}@page{size:A4;margin:0}}
+.nr,.date{display:flex;align-items:center;gap:6px;color:#244f94;font-weight:700}.nr{justify-content:center}.date{justify-content:flex-end;padding-right:6px}.nr input{width:60px}.date input{width:120px;text-align:center}.nr input,.date input{border-bottom:1px solid #244f94;color:#111;font-size:18px;height:26px;text-align:center}
+.topline{display:grid;grid-template-columns:1fr 112px 32px;border-bottom:2px solid #244f94;color:#244f94;font-size:13px;font-weight:700}.topline div{padding:2px 4px}.topline input{font-size:20px;text-align:right;color:#111}
+.kassen{display:grid;grid-template-columns:88mm 27mm 32mm 27mm 22mm;border-left:0;border-top:0}.cell{border-right:1px solid #244f94;border-bottom:1px solid #244f94;min-height:10.8mm;padding:2px 4px}.h{color:#244f94;font-weight:700;font-size:13px}.subh{font-size:11px;color:#244f94}.amount input{text-align:right;font-size:22px}.book{color:#244f94;font-weight:700;font-size:11px}.sectionlabel{color:#244f94;font-size:12px;font-weight:700}.desc input{text-align:left;font-size:18px}.sumlabel{color:#244f94;font-weight:700;text-align:right}.sumamount input{font-size:21px;text-align:right}
+.bottom-grid{display:grid;grid-template-columns:90mm 35mm 30mm 35mm;margin-top:1mm}.bottom-cell{border-bottom:1px solid #244f94;min-height:9mm;padding:2px 4px}.bottom-cell input{font-size:20px;text-align:right}.vatlabel{font-size:20px;text-align:center}.footerline{display:grid;grid-template-columns:80mm 55mm 45mm;margin-top:4mm;align-items:end}.footerline div{border-bottom:1px solid #244f94;min-height:10mm}.footerline .label{border:0;color:#244f94;font-weight:700;font-size:13px}
+@media print{body{background:#fff}.app{padding:0}.toolbar{display:none!important}.page{box-shadow:none;margin:0;width:210mm;height:297mm;min-height:0;padding:10mm 11mm;overflow:hidden}@page{size:A4;margin:0}}
 </style>
 </head>
 <body>
 <div class="app">
-<div class="toolbar"><button onclick="window.print()">Drucken / PDF</button><button class="gray" onclick="setToday()">Heute</button><button class="green" onclick="saveDay()">Tag speichern</button><button class="red" onclick="clearAll()">Leeren</button></div>
+<div class="toolbar">
+  <button onclick="window.print()">Drucken / PDF</button>
+  <button class="gray" onclick="setToday()">Heute</button>
+  <button class="green" onclick="saveDay()">Tag speichern</button>
+  <button class="blue" onclick="newDay()">Neuer Tag</button>
+  <button class="red" onclick="clearAll()">Leeren</button>
+</div>
 
 <section class="page">
-  <div class="kopf"><div class="title">Kassenbericht</div><div class="nr">Nr.<input id="kbNr" value="1"></div><div class="date">Datum<input id="kbDate" type="date" oninput="syncDate()"></div></div>
+  <div class="kopf"><div class="title">Kassenbericht</div><div class="nr">Nr.<input id="kbNr" value="1"></div><div class="date">Datum<input id="kbDate" type="date"></div></div>
   <div class="topline"><div>Kassenbestand bei Geschäftsschluss</div><div><input id="closingCash" class="right" inputmode="decimal" placeholder="0,00" readonly></div><div class="book">Buchungs-<br>vermerke</div></div>
 
   <div class="kassen">
@@ -39,14 +42,17 @@ input,select{font-family:Arial,Helvetica,sans-serif;font-size:15px;border:0;back
     <div class="cell desc"><input id="expDesc3" class="left"></div><div class="cell"></div><div class="cell amount"><input id="exp3" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell desc"><input id="expDesc4" class="left"></div><div class="cell"></div><div class="cell amount"><input id="exp4" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell desc"><input id="expDesc5" class="left"></div><div class="cell"></div><div class="cell amount"><input id="exp5" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
+
     <div class="cell sectionlabel">Geschäftsausgaben</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell desc"><input id="bizDesc1" class="left" value="Gutschein"></div><div class="cell"></div><div class="cell amount"><input id="biz1" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell desc"><input id="bizDesc2" class="left"></div><div class="cell"></div><div class="cell amount"><input id="biz2" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
+
     <div class="cell sectionlabel">Privatentnahmen</div><div class="cell center">–</div><div class="cell center">–</div><div class="cell"></div><div class="cell"></div>
     <div class="cell sectionlabel">Sonstige Ausgaben</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell desc"><input id="otherDesc1" class="left" value="EC"></div><div class="cell"></div><div class="cell amount"><input id="other1" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell desc"><input id="otherDesc2" class="left"></div><div class="cell"></div><div class="cell amount"><input id="other2" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
     <div class="cell desc"><input id="otherDesc3" class="left"></div><div class="cell"></div><div class="cell amount"><input id="other3" inputmode="decimal" oninput="calc()"></div><div class="cell"></div><div class="cell"></div>
+
     <div class="cell"></div><div class="cell subh center">Vorsteuer bei<br>Nettobetrag ▶</div><div class="cell"></div><div class="cell sumamount"><input id="expensesTotal" readonly></div><div class="cell"></div>
     <div class="cell"></div><div class="cell"></div><div class="cell sumlabel">Summe</div><div class="cell sumamount"><input id="summe" readonly></div><div class="cell"></div>
     <div class="cell"></div><div class="cell"></div><div class="cell sumlabel">abzüglich<br>Kassenbestand des Vortages</div><div class="cell sumamount"><input id="prevSaldo" inputmode="decimal" oninput="calc()"></div><div class="cell"></div>
@@ -62,69 +68,63 @@ input,select{font-family:Arial,Helvetica,sans-serif;font-size:15px;border:0;back
   <div class="footerline"><div class="label">Kundenzahl</div><div class="label">Einnahmen (Tageslosung)</div><div><input id="dailyTotal" readonly></div></div>
   <div class="footerline"><div class="label">Betrag/Kunde</div><div class="label">Unterschrift</div><div></div></div>
 </section>
-
-<section class="page">
-  <h1 style="font-size:22px;margin:0 0 10px;text-align:center;text-transform:uppercase">Zählprotokoll Kasse</h1>
-  <table class="cash-table"><thead><tr><th>,</th><th>Quantidade</th><th>Total</th><th></th></tr></thead><tbody id="cashBody"></tbody></table>
-  <table class="summary">
-    <tr><td class="label">Automatischer Vortagssaldo</td><td><input id="zpPrev" inputmode="decimal" oninput="calc()"></td><td><button type="button" onclick="loadPreviousSaldo()">Saldo automatisch</button></td></tr>
-    <tr><td></td><td class="label">Total Bargeld gezählt</td><td class="yellow" id="grandTotalCell">- €</td></tr>
-    <tr><td></td><td class="label">Soll Bargeld laut Kassenbericht</td><td class="yellow" id="zpSollCell">- €</td></tr>
-    <tr><td></td><td class="label">Differenz</td><td class="greenCell" id="zpDiffCell">- €</td></tr>
-  </table>
-  <div class="signs"><div><div class="sign"></div>Erstellt / gezählt</div><div><div class="sign"></div>Kontrolliert</div></div>
-</section>
 </div>
 
 <script>
-const notes=[100,50,20,10,5], coins=[2,1,0.5,0.2,0.1,0.05,0.02,0.01];
 function euro(v){return Math.abs(v)<0.005?'- €':v.toFixed(2).replace('.',',')+' €'}
-function val(id){return parseFloat(String(document.getElementById(id)?.value||'0').replace(',','.'))||0}
+function val(id){return parseFloat(String(document.getElementById(id)?.value||'0').replace(/\./g,'').replace(',','.'))||0}
 function put(id,v){const e=document.getElementById(id); if(e)e.value=Math.abs(v)<0.005?'':v.toFixed(2).replace('.',',')}
-function text(id,v){const e=document.getElementById(id); if(e)e.textContent=euro(v)}
-function qtyInput(idx){return `<div class="qty-wrap"><button type="button" onclick="chg('${idx}',-1)">−</button><input id="q_${idx}" value="0" inputmode="numeric" oninput="calc()"><button type="button" onclick="chg('${idx}',1)">+</button></div>`}
-function row(v,idx){return `<tr><td class="value">${v.toFixed(2).replace('.',',')} €</td><td class="qty">${qtyInput(idx)}</td><td class="total" id="t_${idx}">- €</td><td class="extra"></td></tr>`}
-function totalRow(id,label){return `<tr><td></td><td class="center bold">${label}</td><td class="total redcell" id="${id}">- €</td><td class="extra" id="${id}_extra">- €</td></tr>`}
-function renderCash(){let h='';notes.forEach((v,i)=>h+=row(v,'n'+i));h+=totalRow('notesTotal','Total');coins.forEach((v,i)=>h+=row(v,'c'+i));h+=totalRow('coinsTotal','Total');h+=`<tr><td colspan="3"></td><td class="yellow" id="yellowTotal">- €</td></tr>`;document.getElementById('cashBody').innerHTML=h}
-function q(id){return parseInt(document.getElementById('q_'+id)?.value||'0',10)||0}
-function chg(id,d){document.getElementById('q_'+id).value=Math.max(0,q(id)+d);calc()}
+function isoKey(d){return d.toISOString().slice(0,10)}
 function calc(){
- let nt=0,ct=0;
- notes.forEach((v,i)=>{let s=v*q('n'+i);nt+=s;text('t_n'+i,s)});
- coins.forEach((v,i)=>{let s=v*q('c'+i);ct+=s;text('t_c'+i,s)});
- let counted=nt+ct;
- text('notesTotal',nt);text('notesTotal_extra',nt);text('coinsTotal',ct);text('coinsTotal_extra',ct);text('yellowTotal',counted);text('grandTotalCell',counted);
-
  const expenses=val('exp1')+val('exp2')+val('exp3')+val('exp4')+val('exp5')+val('biz1')+val('biz2')+val('other1')+val('other2')+val('other3');
  const prev=val('prevSaldo');
  const daily=val('vat19')+val('vat7')+val('miscIncome');
-
- // KASSENBERICHT 305 ORIGINAL — voll berechnet
  const closing=prev+daily-expenses;
  const summe=closing+expenses;
  const entry=summe-prev;
-
  put('closingCash',closing);
  put('expensesTotal',expenses);
  put('summe',summe);
  put('cashEntry',entry);
  put('dailyTotal',daily);
-
- if(!document.activeElement || document.activeElement.id!=='zpPrev') document.getElementById('zpPrev').value=document.getElementById('prevSaldo').value;
-
- // Zählprotokoll kontrolliert gegen Kassenbericht
- const zpSoll=closing;
- text('zpSollCell',zpSoll);
- text('zpDiffCell',counted-zpSoll);
  window.lastFinalTotal=closing;
 }
-function setToday(){const d=new Date().toISOString().slice(0,10);document.getElementById('kbDate').value=d}
-function syncDate(){}
-function isoKey(d){return d.toISOString().slice(0,10)}
-function loadPreviousSaldo(){const saved=JSON.parse(localStorage.getItem('sanremo_kb305_saldo')||'{}');const today=isoKey(new Date());const keys=Object.keys(saved).filter(k=>k<today).sort();const last=keys.length?keys[keys.length-1]:null;const v=last?String(saved[last]).replace('.',','):'0,00';document.getElementById('prevSaldo').value=v;document.getElementById('zpPrev').value=v;calc()}
-function saveDay(){calc();const saved=JSON.parse(localStorage.getItem('sanremo_kb305_saldo')||'{}');saved[isoKey(new Date())]=val('closingCash').toFixed(2);localStorage.setItem('sanremo_kb305_saldo',JSON.stringify(saved));alert('Kassenbestand gespeichert: '+euro(val('closingCash')))}
-function clearAll(){document.querySelectorAll('input').forEach(i=>{if(i.type!=='date')i.value=''});document.querySelectorAll('.qty-wrap input').forEach(i=>i.value='0');document.getElementById('bizDesc1').value='Gutschein';document.getElementById('otherDesc1').value='EC';setToday();calc()}
-renderCash();setToday();calc();
+function setToday(){document.getElementById('kbDate').value=new Date().toISOString().slice(0,10)}
+function loadPreviousSaldo(){
+ const saved=JSON.parse(localStorage.getItem('sanremo_kb305_saldo')||'{}');
+ const today=isoKey(new Date());
+ const keys=Object.keys(saved).filter(k=>k<today).sort();
+ const last=keys.length?keys[keys.length-1]:null;
+ const v=last?String(saved[last]).replace('.',','):'0,00';
+ document.getElementById('prevSaldo').value=v;
+ calc();
+}
+function saveDay(){
+ calc();
+ const saved=JSON.parse(localStorage.getItem('sanremo_kb305_saldo')||'{}');
+ saved[isoKey(new Date())]=val('closingCash').toFixed(2);
+ localStorage.setItem('sanremo_kb305_saldo',JSON.stringify(saved));
+ alert('Kassenbestand gespeichert: '+euro(val('closingCash')));
+}
+function newDay(){
+ saveDay();
+ clearInputsForNewDay();
+ loadPreviousSaldo();
+}
+function clearInputsForNewDay(){
+ ['exp1','exp2','exp3','exp4','exp5','biz1','biz2','other1','other2','other3','vat19','vat7','miscIncome'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});
+}
+function clearAll(){
+ document.querySelectorAll('input').forEach(i=>{if(i.type!=='date')i.value=''});
+ document.getElementById('kbNr').value='1';
+ document.getElementById('bizDesc1').value='Gutschein';
+ document.getElementById('otherDesc1').value='EC';
+ localStorage.removeItem('sanremo_kb305_saldo');
+ setToday();
+ calc();
+}
+setToday();
+loadPreviousSaldo();
 </script>
 </body>
 </html>
